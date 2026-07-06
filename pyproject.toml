@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nexus"
+version = "0.1.0"
+description = "Intelligent Agentic Operating Layer"
+authors = [{name = "Abhijeet", email = "abhijeet@example.com"}]
+dependencies = [
+    "pydantic>=2.0",
+    "dependency-injector>=4.41.0",
+    "fastapi>=0.100.0",
+    "uvicorn>=0.23.0",
+    "httpx>=0.25.0",
+    "chromadb>=0.4.0",
+    "networkx>=3.0",
+    "watchdog>=3.0.0",
+    "ollama>=0.2.0",
+    "rich>=13.0.0",
+    "psutil>=5.9.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "mypy>=1.0",
+]
+
+[tool.setuptools]
+packages = ["core", "infrastructure", "engine", "memory", "agents", "plugins", "api"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
+
+[tool.mypy]
+python_version = "3.13"
+exclude = ["^\\.venv/"]
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+no_implicit_optional = true
+strict_optional = true
